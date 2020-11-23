@@ -12,6 +12,22 @@ namespace Zork
         SOUTH,
         EAST,
         WEST,
+        INVENTORY,
+        SAVE,
+        LOAD,
+        SCORE,
+        TIME,
+        READ,
+        EAT,
+        DRINK,
+        USE,
+        GIVE,
+        PUT,
+        PUSH,
+        MOVE,
+        TAKE,
+        DROP,
+        HELP,
         UNKNOWN
     }
 }
