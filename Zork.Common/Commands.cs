@@ -4,30 +4,46 @@ using System.Text;
 
 namespace Zork
 {
-    enum Commands
+    public class Command : IEquatable<Command>
     {
-        QUIT,
-        LOOK,
-        NORTH,
-        SOUTH,
-        EAST,
-        WEST,
-        INVENTORY,
-        SAVE,
-        LOAD,
-        SCORE,
-        TIME,
-        READ,
-        EAT,
-        DRINK,
-        USE,
-        GIVE,
-        PUT,
-        PUSH,
-        MOVE,
-        TAKE,
-        DROP,
-        HELP,
-        UNKNOWN
+        public string Name { get; set; }
+
+        public string[] Verbs { get; }
+
+        public Action<Game, CommandContext> Action { get; }
+
+        public Command(string name, string verb, Action<Game, CommandContext> action) : this(name, new string[] { verb }, action)
+        {
+        }
+
+        public Command(string name, IEnumerable<string> verbs, Action<Game, CommandContext> action)
+        {
+            Name = name;
+            Verbs = verbs.ToArray();
+            Action = action;
+        }
+
+        public static bool operator ==(Command lhs, Command rhs)
+        {
+            if (ReferenceEquals(lhs, rhs))
+            {
+                return true;
+            }
+
+            if (lhs is null || rhs is null)
+            {
+                return false;
+            }
+
+            return lhs.Name == rhs.Name;
+        }
+
+        public static bool operator !=(Command lhs, Command rhs) => !(lhs == rhs);
+
+        public bool Equals(Command other) => this == other;
+
+        public override int GetHashCode() => Name.GetHashCode();
+
+        public override string ToString() => Name;
     }
 }

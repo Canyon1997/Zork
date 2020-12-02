@@ -1,5 +1,6 @@
 ﻿using Newtonsoft.Json;
 using System;
+using System.ComponentModel;
 using System.IO;
 using System.Collections.Generic;
 using System.Text;
@@ -7,8 +8,10 @@ using Zork.Common;
 
 namespace Zork
 {
-    public class Player
+    public class Player : INotifyPropertyChanged
     {
+        public event PropertyChangedEventHandler PropertyChanged;
+
         public World World { get; }
 
         [JsonIgnore]
@@ -27,6 +30,11 @@ namespace Zork
             }
         }
 
+        public int Moves { get; set; }
+
+        public int Score { get; set; }
+
+        public int Health { get; set; } = 100;
         public Player(World world, string startingLocation)
         {
             World = world;
