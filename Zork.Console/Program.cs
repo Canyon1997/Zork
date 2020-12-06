@@ -1,5 +1,6 @@
 ﻿using System;
 
+
 namespace Zork
 {
     class Program
@@ -8,8 +9,8 @@ namespace Zork
         {
             const string defaultGameFilename = "Zork.json";
             string gameFilename = (args.Length > 0 ? args[(int)CommandLineArguments.GameFilename] : defaultGameFilename);
-
-            Game.Start(gameFilename);
+            
+            Game.StartFromFile(gameFilename);
             Console.WriteLine("Thank you for playing!");
         }
 

@@ -5,8 +5,6 @@ using System.Reflection;
 using System.Text;
 using System.ComponentModel;
 using Newtonsoft.Json;
-using Microsoft.CodeAnalysis.CSharp.Scripting;
-using Microsoft.CodeAnalysis.Scripting;
 
 namespace Zork
 {
@@ -40,21 +38,23 @@ namespace Zork
 
         public Game() => CommandManager = new CommandManager();
 
-        public static void Start(string gameFilename)
+        public static void StartFromFile(string gameFilename)
         {
             if (!File.Exists(gameFilename))
             {
                 throw new FileNotFoundException("Expected file.", gameFilename);
             }
 
-            while (Instance == null || Instance.mIsRestarting)
-            {
-                Instance = Load(gameFilename);
-                Instance.LoadCommands();
-                Instance.LoadScripts();
-                Instance.DisplayWelcomeMessage();
-                Instance.Run();
-            }
+            Start(File.ReadAllText(gameFilename));
+
+        }
+
+        public static void Start(string gameJsonString)
+        {
+            Instance = Load(gameJsonString);
+            Instance.LoadCommands();
+            Instance.DisplayWelcomeMessage();
+            Instance.Run();
         }
 
         private void Run()
@@ -91,9 +91,9 @@ namespace Zork
 
         public void Quit() => mIsRunning = false;
 
-        public static Game Load(string filename)
+        public static Game Load(string jsonString)
         {
-            Game game = JsonConvert.DeserializeObject<Game>(File.ReadAllText(filename));
+            Game game = JsonConvert.DeserializeObject<Game>(jsonString);
             game.Player = game.World.SpawnPlayer();
 
             return game;
@@ -126,29 +126,7 @@ namespace Zork
             CommandManager.AddCommands(commandMethods);
         }
 
-        private void LoadScripts()
-        {
-            foreach (string file in Directory.EnumerateFiles(ScriptDirectory, ScriptFileExtension))
-            {
-                try
-                {
-                    var scriptOptions = ScriptOptions.Default.AddReferences(Assembly.GetExecutingAssembly());
-#if DEBUG
-                    scriptOptions = scriptOptions.WithEmitDebugInformation(true)
-                                    .WithFilePath(new FileInfo(file).FullName)
-                                    .WithFileEncoding(Encoding.UTF8);
-#endif
-
-                    string script = File.ReadAllText(file);
-                    CSharpScript.RunAsync(script, scriptOptions).Wait();
-                }
-                catch (Exception ex)
-                {
-                    Console.WriteLine($"Error compiling script: {file}  Error: {ex.Message}");
-                }
-            }
-        }
-
+        
         public static bool ConfirmAction(string prompt)
         {
             Console.Write(prompt);

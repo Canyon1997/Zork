@@ -5,6 +5,11 @@
     <RootNamespace>Zork</RootNamespace>
   </PropertyGroup>
 
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+    <WarningLevel>5</WarningLevel>
+    <OutputPath>../Zork.Unity/Assets/</OutputPath>
+  </PropertyGroup>
+
   <ItemGroup>
     <None Include="FodyWeavers.xsd" />
   </ItemGroup>
