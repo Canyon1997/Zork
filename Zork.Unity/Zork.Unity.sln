@@ -5,6 +5,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Assembly-CSharp", "Assembly
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Zork.Common", "..\Zork.Common\Zork.Common.csproj", "{41D97014-5FB0-40A3-BA73-D3C613C85B22}"
 EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Zork.Console", "..\Zork.Console\Zork.Console.csproj", "{AA692132-73F8-45F8-896F-DA8B9CA2B461}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -19,6 +21,10 @@ Global
 		{41D97014-5FB0-40A3-BA73-D3C613C85B22}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{41D97014-5FB0-40A3-BA73-D3C613C85B22}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{41D97014-5FB0-40A3-BA73-D3C613C85B22}.Release|Any CPU.Build.0 = Release|Any CPU
+		{AA692132-73F8-45F8-896F-DA8B9CA2B461}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AA692132-73F8-45F8-896F-DA8B9CA2B461}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AA692132-73F8-45F8-896F-DA8B9CA2B461}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AA692132-73F8-45F8-896F-DA8B9CA2B461}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

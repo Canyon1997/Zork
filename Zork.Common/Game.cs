@@ -30,6 +30,9 @@ namespace Zork
         [JsonIgnore]
         public bool IsRunning { get; }
 
+        [JsonIgnore]
+        public IOutputService Output { get; private set; }
+
         public Game(World world, Player player)
         {
             World = world;
@@ -38,23 +41,23 @@ namespace Zork
 
         public Game() => CommandManager = new CommandManager();
 
-        public static void StartFromFile(string gameFilename)
+        public static void StartFromFile(string gameFilename, IOutputService output)
         {
             if (!File.Exists(gameFilename))
             {
                 throw new FileNotFoundException("Expected file.", gameFilename);
             }
 
-            Start(File.ReadAllText(gameFilename));
+            Start(File.ReadAllText(gameFilename), output);
 
         }
 
-        public static void Start(string gameJsonString)
+        public static void Start(string gameJsonString, IOutputService output)
         {
             Instance = Load(gameJsonString);
+            Instance.Output = output;
             Instance.LoadCommands();
             Instance.DisplayWelcomeMessage();
-            Instance.Run();
         }
 
         private void Run()
@@ -63,21 +66,21 @@ namespace Zork
             Room previousRoom = null;
             while (mIsRunning)
             {
-                Console.WriteLine(Player.Location);
+                Output.WriteLine(Player.Location);
                 if (previousRoom != Player.Location)
                 {
                     CommandManager.PerformCommand(this, "LOOK");
                     previousRoom = Player.Location;
                 }
 
-                Console.Write("\n> ");
+                Output.Write("\n> ");
                 if (CommandManager.PerformCommand(this, Console.ReadLine().Trim()))
                 {
                     Player.Moves++;
                 }
                 else
                 {
-                    Console.WriteLine("That's not a verb I recognize.");
+                    Output.WriteLine("That's not a verb I recognize.");
                 }
             }
         }
@@ -129,7 +132,7 @@ namespace Zork
         
         public static bool ConfirmAction(string prompt)
         {
-            Console.Write(prompt);
+            Instance.Output.Write(prompt);
 
             while (true)
             {
@@ -144,16 +147,14 @@ namespace Zork
                 }
                 else
                 {
-                    Console.Write("Please answer yes or no.> ");
+                    Instance.Output.Write("Please answer yes or no.> ");
                 }
             }
         }
 
-        private void DisplayWelcomeMessage() => Console.WriteLine(WelcomeMessage);
+        private void DisplayWelcomeMessage() => Output.WriteLine(WelcomeMessage);
 
         public static readonly Random Random = new Random();
-        private static readonly string ScriptDirectory = "Scripts";
-        private static readonly string ScriptFileExtension = "*.csx";
 
         private bool mIsRunning;
         private bool mIsRestarting;
