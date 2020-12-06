@@ -2759,19 +2759,19 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\canyo\\.nuget\\packages\\": {}
+    "C:\\Users\\Canyon\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\canyo\\Downloads\\ZorkBuilder\\Zork.Console\\Zork.Console.csproj",
+      "projectUniqueName": "C:\\Users\\Canyon\\Documents\\GitHub\\Zork\\Zork.Console\\Zork.Console.csproj",
       "projectName": "Zork.Console",
-      "projectPath": "C:\\Users\\canyo\\Downloads\\ZorkBuilder\\Zork.Console\\Zork.Console.csproj",
-      "packagesPath": "C:\\Users\\canyo\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\canyo\\Downloads\\ZorkBuilder\\Zork.Console\\obj\\",
+      "projectPath": "C:\\Users\\Canyon\\Documents\\GitHub\\Zork\\Zork.Console\\Zork.Console.csproj",
+      "packagesPath": "C:\\Users\\Canyon\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\Canyon\\Documents\\GitHub\\Zork\\Zork.Console\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "C:\\Users\\canyo\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\Canyon\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -2783,9 +2783,10 @@
       },
       "frameworks": {
         "netcoreapp3.0": {
+          "targetAlias": "netcoreapp3.0",
           "projectReferences": {
-            "C:\\Users\\canyo\\Downloads\\ZorkBuilder\\Zork.Common\\Zork.Common.csproj": {
-              "projectPath": "C:\\Users\\canyo\\Downloads\\ZorkBuilder\\Zork.Common\\Zork.Common.csproj"
+            "C:\\Users\\Canyon\\Documents\\GitHub\\Zork\\Zork.Common\\Zork.Common.csproj": {
+              "projectPath": "C:\\Users\\Canyon\\Documents\\GitHub\\Zork\\Zork.Common\\Zork.Common.csproj"
             }
           }
         }
@@ -2798,6 +2799,7 @@
     },
     "frameworks": {
       "netcoreapp3.0": {
+        "targetAlias": "netcoreapp3.0",
         "dependencies": {
           "Microsoft.CodeAnalysis.CSharp.Scripting": {
             "target": "Package",
@@ -2841,7 +2843,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.301\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.100\\RuntimeIdentifierGraph.json"
       }
     }
   }

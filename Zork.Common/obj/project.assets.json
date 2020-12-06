@@ -2978,19 +2978,19 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\canyo\\.nuget\\packages\\": {}
+    "C:\\Users\\Canyon\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\canyo\\Downloads\\ZorkBuilder\\Zork.Common\\Zork.Common.csproj",
+      "projectUniqueName": "C:\\Users\\Canyon\\Documents\\GitHub\\Zork\\Zork.Common\\Zork.Common.csproj",
       "projectName": "Zork.Common",
-      "projectPath": "C:\\Users\\canyo\\Downloads\\ZorkBuilder\\Zork.Common\\Zork.Common.csproj",
-      "packagesPath": "C:\\Users\\canyo\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\canyo\\Downloads\\ZorkBuilder\\Zork.Common\\obj\\",
+      "projectPath": "C:\\Users\\Canyon\\Documents\\GitHub\\Zork\\Zork.Common\\Zork.Common.csproj",
+      "packagesPath": "C:\\Users\\Canyon\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\Canyon\\Documents\\GitHub\\Zork\\Zork.Common\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "C:\\Users\\canyo\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\Canyon\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -3002,6 +3002,7 @@
       },
       "frameworks": {
         "netstandard2.0": {
+          "targetAlias": "netstandard2.0",
           "projectReferences": {}
         }
       },
@@ -3013,6 +3014,7 @@
     },
     "frameworks": {
       "netstandard2.0": {
+        "targetAlias": "netstandard2.0",
         "dependencies": {
           "Microsoft.CodeAnalysis.CSharp.Scripting": {
             "target": "Package",
@@ -3043,7 +3045,7 @@
         ],
         "assetTargetFallback": true,
         "warn": true,
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.301\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.100\\RuntimeIdentifierGraph.json"
       }
     }
   }
