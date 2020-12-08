@@ -1,3 +1,10 @@
 .vs/
 Zork/bin/
 Zork/obj/
+Zork/Zork.Unity/Library
+Zork/Zork.Unity/Logs
+Zork/Zork.Unity/obj
+Zork/Zork.Unity/Temp
+Zork/Zork.Unity/UserSettings
+Zork/Zork.Unity/Assembly-CSharp.csproj
+Zork/Zork.Unity/Zork.Unity.sln

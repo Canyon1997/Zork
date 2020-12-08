@@ -171,7 +171,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0cd44c1031e13a943bb63640046fad76, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_UiScaleMode: 0
+  m_UiScaleMode: 1
   m_ReferencePixelsPerUnit: 100
   m_ScaleFactor: 1
   m_ReferenceResolution: {x: 800, y: 600}
@@ -235,6 +235,7 @@ GameObject:
   - component: {fileID: 65423665}
   - component: {fileID: 65423664}
   - component: {fileID: 65423666}
+  - component: {fileID: 65423667}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -255,7 +256,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ZorkGameFileAssetName: Zork
-  Output: {fileID: 65423666}
+  OutputService: {fileID: 65423666}
+  InputService: {fileID: 65423667}
 --- !u!4 &65423665
 Transform:
   m_ObjectHideFlags: 0
@@ -283,6 +285,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   OutputText: {fileID: 0}
+--- !u!114 &65423667
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 65423663}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9d54f5a912e6c3c44abb035f4621046b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  InputField: {fileID: 1144799408}
 --- !u!1 &243794655
 GameObject:
   m_ObjectHideFlags: 0
@@ -454,8 +469,8 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1642995975}
   m_HandleRect: {fileID: 1642995974}
   m_Direction: 2
-  m_Value: 0
-  m_Size: 1
+  m_Value: 1
+  m_Size: 0.99976295
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
@@ -781,6 +796,7 @@ GameObject:
   - component: {fileID: 700324579}
   - component: {fileID: 700324581}
   - component: {fileID: 700324580}
+  - component: {fileID: 700324582}
   m_Layer: 5
   m_Name: Content
   m_TagString: Untagged
@@ -804,7 +820,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: -359}
+  m_AnchoredPosition: {x: 0, y: -768.8659}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
 --- !u!114 &700324580
@@ -847,6 +863,20 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_HorizontalFit: 0
   m_VerticalFit: 1
+--- !u!114 &700324582
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 700324578}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3245ec927659c4140ac4f8d17403cc18, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_HorizontalFit: 0
+  m_VerticalFit: 2
 --- !u!1 &744734676
 GameObject:
   m_ObjectHideFlags: 0
@@ -1181,7 +1211,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 0}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 30}
+  m_SizeDelta: {x: 0, y: 72.95032}
   m_Pivot: {x: 0.5, y: 0}
 --- !u!114 &1144799408
 MonoBehaviour:
@@ -1355,8 +1385,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 501, y: 359}
+  m_AnchoredPosition: {x: 0, y: 21.475}
+  m_SizeDelta: {x: 800, y: 768.86584}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1440996176
 MonoBehaviour:
@@ -1608,7 +1638,7 @@ MonoBehaviour:
   m_enableWordWrapping: 0
   m_wordWrappingRatios: 0.4
   m_overflowMode: 0
-  m_firstOverflowCharacterIndex: 0
+  m_firstOverflowCharacterIndex: -1
   m_linkedTextComponent: {fileID: 0}
   parentLinkedComponent: {fileID: 0}
   m_isTextTruncated: 0

@@ -28,7 +28,10 @@ namespace Zork
         public CommandManager CommandManager { get; }
 
         [JsonIgnore]
-        public bool IsRunning { get; }
+        public bool IsRunning { get; private set; }
+
+        [JsonIgnore]
+        public IInputService Input { get; private set; }
 
         [JsonIgnore]
         public IOutputService Output { get; private set; }
@@ -41,58 +44,57 @@ namespace Zork
 
         public Game() => CommandManager = new CommandManager();
 
-        public static void StartFromFile(string gameFilename, IOutputService output)
+        public static void StartFromFile(string gameFilename, IInputService input, IOutputService output)
         {
             if (!File.Exists(gameFilename))
             {
                 throw new FileNotFoundException("Expected file.", gameFilename);
             }
 
-            Start(File.ReadAllText(gameFilename), output);
+            Start(File.ReadAllText(gameFilename), input, output);
 
         }
 
-        public static void Start(string gameJsonString, IOutputService output)
+        public static void Start(string gameJsonString, IInputService input, IOutputService output)
         {
             Instance = Load(gameJsonString);
+            Instance.Input = input;
             Instance.Output = output;
             Instance.LoadCommands();
             Instance.DisplayWelcomeMessage();
+            Instance.IsRunning = true;
+            Instance.Input.InputReceived += Instance.InputReceivedHandler;
+
         }
 
-        private void Run()
+        private void InputReceivedHandler(object sender, string inputString)
         {
-            mIsRunning = true;
-            Room previousRoom = null;
-            while (mIsRunning)
-            {
-                Output.WriteLine(Player.Location);
-                if (previousRoom != Player.Location)
-                {
-                    CommandManager.PerformCommand(this, "LOOK");
-                    previousRoom = Player.Location;
-                }
 
-                Output.Write("\n> ");
-                if (CommandManager.PerformCommand(this, Console.ReadLine().Trim()))
+                Room previousRoom = Player.Location;
+                if (CommandManager.PerformCommand(this, inputString.Trim()))
                 {
                     Player.Moves++;
+
+                    if (previousRoom != Player.Location)
+                    {
+                        CommandManager.PerformCommand(this, "LOOK");
+                    }
+
                 }
                 else
                 {
                     Output.WriteLine("That's not a verb I recognize.");
                 }
-            }
         }
 
         public void Restart()
         {
-            mIsRunning = false;
+            IsRunning = false;
             mIsRestarting = true;
             Console.Clear();
         }
 
-        public void Quit() => mIsRunning = false;
+        public void Quit() => IsRunning = false;
 
         public static Game Load(string jsonString)
         {
@@ -132,7 +134,8 @@ namespace Zork
         
         public static bool ConfirmAction(string prompt)
         {
-            Instance.Output.Write(prompt);
+            return true;
+            /*Instance.Output.Write(prompt);
 
             while (true)
             {
@@ -149,14 +152,13 @@ namespace Zork
                 {
                     Instance.Output.Write("Please answer yes or no.> ");
                 }
-            }
+            }*/
         }
 
         private void DisplayWelcomeMessage() => Output.WriteLine(WelcomeMessage);
 
         public static readonly Random Random = new Random();
 
-        private bool mIsRunning;
         private bool mIsRestarting;
     }
 }
